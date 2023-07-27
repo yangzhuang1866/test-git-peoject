@@ -108,4 +108,28 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 根据id查询员工信息
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询员工信息")
+    public Result<Employee> getById(@PathVariable Long id){
+        Employee employee =  employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    /**
+     * 编辑员工信息
+     * 前端传来的是json数据，要用@RequestBody注解来接收
+     * @param employeeDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("编辑员工信息")
+    public Result updata(@RequestBody EmployeeDTO employeeDTO){
+        log.info("编辑员工信息:{}", employeeDTO);
+        employeeService.updata(employeeDTO);
+        return Result.success();
+    }
 }
