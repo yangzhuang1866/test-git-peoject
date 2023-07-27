@@ -93,4 +93,19 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+    /**
+     * id 的请求方法是query 地址栏传参，可以直接使用，不用加注解
+     * status 路径参数 加注解 PathVariable ("status")  因为参数名一样，故括号内 内容可以省略
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("启用禁用员工账号：{}，{}",status,id);
+        employeeService.startOrStop(status, id);
+        return Result.success();
+    }
+
 }
