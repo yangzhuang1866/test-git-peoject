@@ -12,7 +12,7 @@ public interface AddressBookMapper {
      * @param addressBook
      * @return
      */
-    List<AddressBook> list(AddressBook addressBook);
+    List<AddressBook>  list(AddressBook addressBook);
 
     /**
      * 新增
